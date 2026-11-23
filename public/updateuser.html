@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>사용자 정보 수정</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>
+		const urlParams = new URLSearchParams(window.location.search);
+		
+		const encodedId = urlParams.get('id');
+		const encodedName = urlParams.get('name');
+		const encodedAge = urlParams.get('age');
+		
+		if (encodedId) {
+			const decodedId = decodeURIComponent(encodedId);
+			console.log(decodedId); // “주원오”
+			$(document).ready(function() {
+				$("#id").val(decodedId);
+			});
+		} else {
+  			console.log('id 파라미터가 없습니다.');
+		}
+
+		if (encodedName) {
+			const decodedName = decodeURIComponent(encodedName);
+			console.log(decodedName); // “주원오”
+			$(document).ready(function() {
+				$("#name").val(decodedName);
+			});
+		} else {
+  			console.log('name 파라미터가 없습니다.');			
+		}
+		
+		if (encodedAge) {
+			const decodedAge = decodeURIComponent(encodedAge);
+			console.log(decodedAge); // “주원오”
+			$(document).ready(function() {
+				$("#age").val(decodedAge);
+			});
+		} else {
+  			console.log('age 파라미터가 없습니다.');
+		}
+		//document.getElementById('password').style.display = 'none';
+	</script>
+	<style>
+		* { box-sizing: border-box; }
+		body {
+			margin: 0;
+			min-height: 100vh;
+			display: grid;
+			place-items: center;
+			padding: 24px;
+			background: #f3f5f9;
+			color: #202735;
+			font-family: Arial, sans-serif;
+		}
+		.login-card {
+			width: 100%;
+			max-width: 380px;
+			padding: 36px;
+			border-radius: 14px;
+			background: #fff;
+			box-shadow: 0 10px 30px rgba(27, 39, 61, 0.1);
+		}
+		h1 { margin: 0 0 8px; text-align: center; font-size: 26px; }
+		.description { margin: 0 0 28px; color: #697386; text-align: center; }
+		label { display: block; margin: 16px 0 7px; font-size: 14px; font-weight: 600; }
+		input {
+			width: 100%;
+			padding: 12px 14px;
+			border: 1px solid #d8deea;
+			border-radius: 7px;
+			font: inherit;
+		}
+		input:focus { outline: 2px solid #a9c5ff; border-color: #3977e8; }
+		input#id { background-color: lightblue; }
+		button {
+			width: 100%;
+			margin-top: 24px;
+			padding: 13px;
+			border: 0;
+			border-radius: 7px;
+			background: #3977e8;
+			color: #fff;
+			font: inherit;
+			font-weight: 700;
+			cursor: pointer;
+		}
+		button:hover { background: #2864d0; }
+		.password { display : none; }
+	</style>
+</head>
+<body>
+	<main class="login-card">
+		<h1>MySQL 사용자 정보 수정</h1>
+		<p class="description">사용자 정보를 입력해 주세요.</p>
+		<form action="/process/updateuser" method="post">
+			<label for="email">아이디</label>
+			<input id="id" name="id" type="email" value="" readonly>
+
+			<label for="name">사용자명</label>
+			<input id="name" name="name" type="text">
+
+			<label for="age">나이</label>
+			<input id="age" name="age" type="text">
+
+			<input id="password" class="password" name="password" type="password" value="" readonly>
+			<p id="demo"></p>
+			<button type="submit" value="전송" name="">업데이트</button>
+		</form>
+	</main>
+</body>
+</html>
