@@ -19,15 +19,29 @@ git clone으로 GitHub 원격저장소 내용 복제하기
 > git remote show origin
 ```
 
-프로그램 실행
+# 프로그램 실행
 
-1. MongoDB 데이터베이스 실행
+1. MongoDB 사용
+
+* 서버 실행
 
 ```sh
 > node app.js
 ```
 
-2. MySQL 데이터베이스 실행
+* 웹브라우저에서 사용자 추가
+
+```sh
+http://localhost:3000/public/adduser.html
+```
+
+* 웹브라우저에서 로그인
+
+```sh
+http://localhost:3000/public/login.html
+```
+
+2. MySQL 사용
 
 ```sh
 > node app2.js
